@@ -25,7 +25,7 @@ Get-Content .\tc.txt | .\[output_name].exe
 In terminal, compile the code and the output file is the name of your code :
 
 ```
-gcc -o [output_name] .\[code_name].c
+gcc -o [output_name] ./[code_name].c
 ```
 
 If you need to test a testcase with tc.txt file, run the code below :
