@@ -1,8 +1,8 @@
 # Nothing To Do Here
 
-This is just a place where i archived my C code. And it is mostly about algorithm and data structure
+This is just a place where i archived my C/C++ code. And it is mostly about algorithm and data structure
 
-## How To Run
+## How To Run in C
 
 Move to the directory containing the code file with `cd` command.
 
@@ -33,3 +33,6 @@ If you need to test a testcase with tc.txt file, run the code below :
 ```
 [output_name] < tc.txt
 ```
+
+if you are using C++, change the gcc with your own g++.
+
