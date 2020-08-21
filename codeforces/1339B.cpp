@@ -9,28 +9,29 @@ void merge(int a[], int l = 0, int m = 0, int r = 0)
     int x = m - l + 1;
     int y = r - m;
 
-    // int *L = (int *)malloc(x * sizeof(int));
-    // int *R = (int *)malloc(y * sizeof(int));
-    int L[x], R[y];
+    int *L = (int *)malloc(x * sizeof(int));
+    int *R = (int *)malloc(y * sizeof(int));
 
     REP(i, 0, x)
     L[i] = a[i + l];
-    REP(j, 0, y)
-    R[j] = a[j + m + 1];
+    REP(i, 0, y)
+    R[i] = a[i + m + 1];
 
     int i = 0, j = 0, k = l;
     while (i < x && j < y)
     {
-        if (L[i] <= R[i])
+        if (L[i] < R[j])
             a[k++] = L[i++];
         else
             a[k++] = R[j++];
     }
-
     while (i < x)
         a[k++] = L[i++];
     while (j < y)
         a[k++] = R[j++];
+
+    free(L);
+    free(R);
 }
 
 void mergeSort(int a[], int l = 0, int r = 0)
@@ -49,11 +50,15 @@ void oscillationPrint(int a[], int n = 0)
     int mid = n / 2;
     int l, r;
     l = r = mid;
-    int cnt = 0;
+    int cnt = 1;
 
-    while (cnt < n)
+    // REP(i, 0, n)
+    //     cout << a[i] << " \n"[i == n - 1];
+    // return;
+
+    while (cnt <= n)
     {
-        cout << a[mid - 1] << "(" << mid - 1 << ") ";
+        cout << a[mid] << " ";
         if ((cnt + n) % 2)
             mid = --l;
         else
@@ -75,12 +80,8 @@ int main()
         a[i] = 0;
         REP(i, 0, n)
         cin >> a[i];
-
         mergeSort(a, 0, n - 1);
-        REP(i, 0, n)
-        cout << a[i] << " ";
-
-        // oscillationPrint(a, n);
+        oscillationPrint(a, n);
     }
     return 0;
 }
