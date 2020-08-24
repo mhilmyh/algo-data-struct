@@ -53,9 +53,9 @@ int main()
     if (num != 0)
         value.push_back(num);
 
-    for (auto x : op)
-        cout << x << ",";
-    cout << "\n";
+    // for (auto x : op)
+    //     cout << x << ",";
+    // cout << "\n";
 
     // kali dan bagi
     for (int i = 0; i < op.size(); i++)
@@ -90,9 +90,9 @@ int main()
     if (!dont.count(op.size()) && value.size() > op.size())
         del.push_back(value.back());
 
-    for (auto x : del)
-        cout << x << ",";
-    cout << "\n";
+    // for (auto x : del)
+    //     cout << x << ",";
+    // cout << "\n";
 
     lli sum = 0;
     for (int i = 0; i < op2.size(); i++)
