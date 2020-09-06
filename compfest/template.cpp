@@ -5,6 +5,7 @@
 using namespace std;
 
 typedef long long int lli;
+typedef long long unsigned llu;
 
 int main() {
     ios_base::sync_with_stdio(false);
