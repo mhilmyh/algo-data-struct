@@ -19,16 +19,15 @@ int solve(int n) {
 
   int cnt = (d.size()-1) * 9;
 
-  bool same_digit;
-  for(int i = 1; i <= d.back(); i++) {
-    same_digit = true;
-    for(int j = 0; j < d.size(); j++) same_digit &= (d[j] >= i);
-    cout << "i: " << i << " , same_digit: " << (same_digit ? "true" : "false") << endl;
-    if(same_digit) cnt++;
+  int bound = d.back();
+  for(int i = 0; i < d.size()-1; i++) {
+    bound *= 10;
+    bound += d.back();
   }
+  
+  if(bound <= n) cnt++;
 
-
-  return cnt;
+  return cnt + (d.back() - 1);
 }
 
 int main() {
