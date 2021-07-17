@@ -13,28 +13,46 @@ void solve() {
   for (int i = 0; i < n; i++)
     for (int j = 0; j < n; j++) {
       cin >> c[i][j];
-      if(c[i][j] == '*') sq.push_back({i,j});
+      if (c[i][j] == '*') sq.push_back({i,j});
     }
+
+  if (sq.size() < 2) {
+    cout << "Skip\n";
+    return;
+  }
   
-  sort(sq.begin(), sq.end());
-  
-  int dist_i = abs(sq[1].first - sq[0].first);
-  int dist_j = abs(sq[1].second - sq[0].second);
+  if (sq[0].first == sq[1].first) {
+    int diff = 1;
 
-  int dir_i = (max(sq[0].first, sq[1].first) + dist_i < n) ? 1 : -1;
-  int dir_j = (max(sq[0].second, sq[1].second) + dist_j < n) ? 1 : -1;
+    if (sq[0].first + diff >= n) diff *= -1;
 
-  cout << "dist_i: " << dist_i << "\n";
-  cout << "dist_j: " << dist_j << "\n";
-  cout << "dir_i: " << dir_i << "\n";
-  cout << "dir_j: " << dir_j << "\n";
-  cout << endl;
-  // c[sq[0].first + dist_i * dir_i][sq[0].second + dist_j * dir_j] = '*';
-  // c[sq[1].first + dist_i * dir_i][sq[1].second + dist_j * dir_j] = '*';
+    c[sq[0].first + diff][sq[0].second] = '*';
+    c[sq[1].first + diff][sq[1].second] = '*';
+  }
 
-  for (int i = 0; i < n; i++)
-    for (int j = 0; j < n; j++)
-      cout << c[i][j] << " \n"[j == n-1];
+  else if (sq[0].second == sq[1].second) {
+    int diff = 1;
+
+    if (sq[0].second + diff >= n) diff *= -1;
+
+    c[sq[0].first][sq[0].second + diff] = '*';
+    c[sq[1].first][sq[1].second + diff] = '*';
+  }
+
+  else {
+    c[sq[0].first][sq[1].second] = '*';
+    c[sq[1].first][sq[0].second] = '*';
+  }
+
+  for (int i = 0; i < n; i++) {
+    for (int j = 0; j < n; j++) {
+      cout << c[i][j];
+    }
+    cout << '\n';
+  }
+
+  c.clear();
+  sq.clear();
 }
 
 int main() {
