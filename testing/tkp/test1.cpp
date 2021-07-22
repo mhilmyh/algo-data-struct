@@ -16,7 +16,7 @@ int main() {
     x[a] = false;
   }
 
-  for(int i = 1; i <= 10; i++) {
+  for(int i = 1; i <= 100; i++) {
     if(x[i]) {
       cout << "i: " << i << "\n";
       return 0;
